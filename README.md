@@ -21,7 +21,7 @@ This repository contains teaching materials for a workshop on using the Git/Gith
 
 ## Instructions
 
-You will need to have [R](https://cran.r-project.org) and [R Studio](https://www.rstudio.com/products/rstudio/download/#download) installed on your computer. [Download the materials for this workshop](https://github.com/xp-song/Intro2R-Git/archive/master.zip) from the Github repository [Intro2R-Git](https://github.com/xp-song/Intro2R-Git). Please sign up for a Github account at <https://github.com> and install Git on your computer before the workshop:  
+You will need to have [R](https://cran.r-project.org) and [R Studio](https://www.rstudio.com/products/rstudio/download/#download) installed on your computer. Please sign up for a Github account at <https://github.com> and install Git on your computer before the workshop:  
 
 - Windows: http://git-scm.com/download/win.
 - OS X: http://git-scm.com/download/mac.
@@ -30,7 +30,7 @@ You will need to have [R](https://cran.r-project.org) and [R Studio](https://www
 
 <br>
 
-In the downloaded folder you will see a few important items. 
+[Download the materials for this workshop](https://github.com/xp-song/Intro2R-Git/archive/master.zip) from the Github repository [Intro2R-Git](https://github.com/xp-song/Intro2R-Git). In the downloaded folder you will see a few important items. 
 
 * The _'slides'_ folder. View course materials in your web browser by opening the **.html** files   
 

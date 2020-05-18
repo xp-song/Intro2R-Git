@@ -1,6 +1,6 @@
 # Intro2R-Git
 
-This repository contains teaching materials for a workshop on using the Git/Github version control system for R programming. It assumes that you have basic knowledge of R and have some experience using the RStudio Client. You can read more about the workshop in this [blogpost](https://xp-song.github.io/posts/intro2r-git/), or preview the slide deck directly [here](https://xp-song.github.io/files/slides/Intro2r_git/1_Intro2Rgit_slides#1).  
+This repository contains teaching materials for a workshop on using the Git/Github version control system for R programming. It assumes that you have basic knowledge of R and have some experience using the RStudio Client.
 
 <br>
 
@@ -14,7 +14,11 @@ This repository contains teaching materials for a workshop on using the Git/Gith
 
 4. Git it going
 
-5. Useful resources
+5. Git basics
+
+6. Git collaorating
+
+7. Useful resources
 
 
 <br>
@@ -23,10 +27,10 @@ This repository contains teaching materials for a workshop on using the Git/Gith
 
 You will need to have [R](https://cran.r-project.org) and [R Studio](https://www.rstudio.com/products/rstudio/download/#download) installed on your computer. Please sign up for a Github account at <https://github.com> and install Git on your computer before the workshop:  
 
-- Windows: http://git-scm.com/download/win.
-- OS X: http://git-scm.com/download/mac.
-- Debian/Ubuntu: sudo apt-get install git-core.
-- Other Linux distros: http://git-scm.com/download/linux.
+- OS X: http://git-scm.com/download/mac
+- Windows: http://git-scm.com/download/win
+- Debian/Ubuntu: sudo apt-get install git-core
+- Other Linux distros: http://git-scm.com/download/linux
 
 <br>
 

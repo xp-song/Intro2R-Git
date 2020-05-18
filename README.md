@@ -16,7 +16,7 @@ This repository contains teaching materials for a workshop on using the Git/Gith
 
 5. Git basics
 
-6. Git collaorating
+6. Git collaborating
 
 7. Useful resources
 

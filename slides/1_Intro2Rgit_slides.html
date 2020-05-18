@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide, title-slide
 ## Version control using Git and Github
 ### <a href="https://xp-song.github.io">Song, Xiao Ping</a>
 ### <a href="mailto:xp.song@u.nus.edu" class="email">xp.song@u.nus.edu</a> <br><br> Course materials: <a href="https://github.com/xp-song/Intro2R-Git" class="uri">https://github.com/xp-song/Intro2R-Git</a>
-### updated 2020-05-18
+### updated 2020-05-19
 
 ---
 
@@ -537,7 +537,8 @@ Note: Look up **rebasing history** to go back in time to prevent a specific mist
 
 ???
 
-- Navigate/view history
+- Navigate/view history (e.g. with collab)
+- Example of very bad, uninformative commit messages, using 2 diff coms (diff names)
 
 ---
 
@@ -577,18 +578,23 @@ __[Git collaborating](#gitcollab)__
 
 # Git collaborating
 
-**[Create a new repo on Github](https://github.com/new)** and choose one of the following:
+.left-column[ 
+### Link Github
+]
+.right-column[ 
+**[Create a new repo on Github](https://github.com/new)**
 
-1. If you're starting fresh, create new project using RStudio and clone the online repo to your computer (as shown previously)
+1. If you're starting fresh, create new RStudio project and clone the online repo to your computer (as shown previously)
   
-2. If you've already been working on a repo locally, *'push'* (i.e. publish) the content to the new online repo. Run the following in the Shell:    
+2. If you've already been working on a local repo, *'push'* (i.e. publish) content to the new online repo. Run in Shell:    
 `git remote add origin git@github.com:YOUR USERNAME/REPO NAME.git`  
 `git push -u origin master`
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="images/git remote.png" alt="Git basic operations (kevintshoemaker.github.io)" width="300" /&gt;
+&lt;img src="images/git remote.png" alt="Git basic operations (kevintshoemaker.github.io)" width="250" /&gt;
 &lt;p class="caption"&gt;Git basic operations (kevintshoemaker.github.io)&lt;/p&gt;
 &lt;/div&gt;
+]
 
 ???
 
@@ -601,27 +607,181 @@ __[Git collaborating](#gitcollab)__
 
 # Git collaborating
 
-**_Push_ code to Github**   
-
-Do this when you're ready for collaborators to view changes. Each push usually includes multiple commits.
+.left-column[ 
+### &lt;span style="color:grey"&gt;Link Github&lt;/span&gt;
+### Push
+]
+.right-column[ 
+**Push code when you're ready for collaborators to view changes.**  
+Each push usually includes multiple commits.
 
 &lt;img src="images/ready to push.png" width="700" style="display: block; margin: auto;" /&gt;
   
 .footnote[
-Note: It is good practice to _always **'Pull'** before you **'Push'**_, in case collaborators have made changes online!
-]
+🌟 **Best Practice:** _Always 'Pull' before you 'Push'_, in case collaborators have made changes online!
+]]
 
 ???
 
 - Now the buttons won't be greyed out!
-
+- Git actually won't let u push if there are changes online
+- Sometimes Git will merge changes automatically, if not it will show an error that says you have to manually deconflict changes
 
 ---
 
 # Git collaborating
 
-If you do not own a repo, you'll have to *'fork'* (i.e. make a copy of) that repo onto your own Github account  
+.left-column[ 
+### &lt;span style="color:grey"&gt;Link Github&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Push&lt;/span&gt;
+### Conflicts 😱
+]
+.right-column[ 
+&lt;img src="images/deconflict.png" width="400" style="display: block; margin: auto;" /&gt;
 
+**Set style to `diff3`**  
+This shows local/remote changes _with the original code_ (default `diff2` setting doesn't show original). Run in the Shell:  
+`git config --global merge.conflictstyle diff3`  
+]
+
+???
+
+- RStudio currently doesn't provide many tools, so you may need to use the command line  
+- Open every file with the orange status  
+
+--
+
+.right-column[ 
+If you're in the middle of a merge conflict, change the setting before re-trying the merge:  
+`git merge --abort`  
+`git config --global merge.conflictstyle diff3`  
+`git pull`  
+]
+
+---
+
+# Git collaborating
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Link Github&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Push&lt;/span&gt;
+### Conflicts 😱
+]
+.right-column[ 
+**Conflict marker:** 
+
+```r
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
+# This code section shows my local changes...
+
+||||||| merged common ancestors
+
+=======
+  
+# This code section shows remote changes... 
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; remote
+```
+
+The middle section shows *original* code before the split
+
+.small[.footnote[
+If the whole thing is one hot mess, abort the merge with `git merge --abort` &amp; try again `git pull`.
+]]]
+--
+.right-column[ 
+__*Delete all conflict markers* before staging/commit/pushing the new de-conflicted file!__
+]
+
+---
+
+# Git collaborating
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Link Github&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Push&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Conflicts&lt;/span&gt;
+### Investigate
+]
+.right-column[ 
+**Git dropdown menu**: Track the history of a *specific* file
+
+&lt;img src="images/git dropdown.png" width="600" style="display: block; margin: auto;" /&gt;
+
+.footnote[
+**'Blame'** shows the last change made to each line of code, who made the change, and the commit the change belongs to.  
+]
+]
+
+---
+
+# Git collaborating
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Link Github&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Push&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Conflicts&lt;/span&gt;
+### Investigate
+]
+.right-column[ 
+**Discuss &amp; track issues on Github**  
+
+&lt;img src="images/issues.png" width="700" style="display: block; margin: auto;" /&gt;
+
+.small[.footnote[
+Note: Automatically link to an issue by typing `#&lt;issue number&gt;` in your commit message. You can also close an issue by typing `Closes #&lt;issue number&gt;`.
+]]
+]
+
+---
+
+# Git collaborating
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Link Github&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Push&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Conflicts&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Investigate&lt;/span&gt;
+### Branches
+]
+.right-column[ 
+**What if you do not own a repo?**
+
+*'Fork'* (i.e. make a copy of) that repo onto your own Github account, then *clone* it to your local computer (as shown previously)  
+
+&lt;img src="images/fork.png" width="550" style="display: block; margin: auto;" /&gt;
+
+A *forked* repo is a __*static*__ copy. Even if you sync between your local and forked repo, the *original* repo may undergo changes
+
+]
+
+???
+- This is where we talk about branches
+
+---
+
+# Git collaborating
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Link Github&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Push&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Conflicts&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Investigate&lt;/span&gt;
+### Branches
+]
+.right-column[ 
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="images/branches.png" alt="Git branches (atlassian.com)" width="400" /&gt;
+&lt;p class="caption"&gt;Git branches (atlassian.com)&lt;/p&gt;
+&lt;/div&gt;
+
+
+]
+
+???
+- We have been saving commits to the master branch
+- If we want to try something experimental/fork a repo = create new branches
 
 
 ---

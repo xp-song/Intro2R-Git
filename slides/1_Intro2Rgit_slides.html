@@ -64,6 +64,9 @@ __[Why use version control?](#why)__
 
 &lt;img src="images/phd101212s.gif" width="400" style="display: block; margin: auto;" /&gt;
 
+???
+- We've all been there...
+
 ---
 
 # Why use version control?
@@ -103,7 +106,7 @@ __[Why use version control?](#why)__
 
 ???
 - This doesn't mean tt git is easy to learn... a big topic...  
-- Merge different changes... A bit like Tokyo's train map (can never understand it properly)
+- A bit like Tokyo's train map (can never understand it properly)
 - Terminology can be quite strange... poor annotation can make it even more confusing
 - Nonetheless, RStudio can make it easier for us
 
@@ -139,7 +142,7 @@ class: left
 - Each project has it's own workspace a.k.a. 'working directory' (separate configuration files, history, etc.)
 
 ???
-- We can use Git with R using RStudio Projects
+We can use Git with R using RStudio Projects
 
 - Workspace = Table in my office 
 - How do I know which is my table?
@@ -149,13 +152,11 @@ class: left
 - The location of the '_.RProj_' file defines the 'working directory' *and the __'Git repository'__*
 
 ???
-- E.g. tissue paper
-- Likewise, .RProj file tells R that this is my workspace 
+E.g. tissue paper... likewise, .RProj file tells R that this is my workspace 
   - Address: see window header, type getwd()  
-  
-- Each project will have a diff wd
+  - Each project will have a diff wd
 
-- Git is 'enabled' for the wd folder (hidden `.git` files)
+Git is 'enabled' for the wd folder (hidden `.git` files)
 
 --
 
@@ -218,10 +219,10 @@ __[Initial set up](#setup)__
 ### Install Git
 ]
 .right-column[ 
-- Windows: http://git-scm.com/download/win.
-- OS X: http://git-scm.com/download/mac.
-- Debian/Ubuntu: sudo apt-get install git-core.
-- Other Linux distros: http://git-scm.com/download/linux.
+- OS X: http://git-scm.com/download/mac
+- Windows: http://git-scm.com/download/win
+- Debian/Ubuntu: sudo apt-get install git-core
+- Other Linux distros: http://git-scm.com/download/linux
 ]
 
 ---
@@ -233,7 +234,7 @@ __[Initial set up](#setup)__
 ### Set-up Git
 ]
 .right-column[ 
-In the *Shell*, configure your name and email address for Git:  
+**In the *Shell*, configure your name and email for Git:**  
 
 `git config --global user.name "YOUR FULL NAME"`  
 `git config --global user.email "YOUR EMAIL ADDRESS"`  
@@ -242,7 +243,7 @@ All commits (i.e. tracked changes) you make will be labelled with this informati
 ]
 --
 .right-column[ 
-You can check if you’re set up correctly by running:  
+**You can check if you’re set up correctly by running:**  
 `git config --global --list`
 ]
 ---
@@ -255,8 +256,10 @@ You can check if you’re set up correctly by running:
 ### Github
 ]
 .right-column[ 
-Create an account at https://github.com, using the same email address as specified in Git.
+**Create an account at https://github.com**  
 ]
+???
+- Use the same email address as specified in Git
 
 ---
 
@@ -269,7 +272,7 @@ Create an account at https://github.com, using the same email address as specifi
 ### Security
 ]
 .right-column[ 
-Using a **SSH key-pair** reduces the need to key in your password.  
+**Use an _SSH key-pair_ to reduce the need to key in your password**  
 
 - The *public* key encrypts data to be read by those with *private* key
 - In R, check if it is already present: `file.exists("~/.ssh/id_rsa.pub")`
@@ -289,7 +292,7 @@ Using a **SSH key-pair** reduces the need to key in your password.
 ### Security
 ]
 .right-column[ 
-Add SSH key to Github at &lt;https://github.com/settings/ssh&gt;:
+**Add SSH key to Github at &lt;https://github.com/settings/ssh&gt;**
 
 &lt;img src="images/SSH Github.png" width="600" style="display: block; margin: auto;" /&gt;
 
@@ -340,10 +343,11 @@ Unzip [downloaded](https://github.com/xp-song/Intro2R-Git/archive/master.zip) wo
 
 &lt;img src="images/Intro2R-Gitproj_initialise.png" width="400" style="display: block; margin: auto;" /&gt;
 
-Go to *Tools &gt; Project Options &gt; Git/SVN* to enable Git with this RStudio Project (restart R).  
+**Enable Git with this RStudio Project**  
+Go to *Tools &gt; Project Options &gt; Git/SVN* (you will be prompted to restart R).  
 
 ???
-- run `git init` in shell?
+- Alternative method: run `git init` in shell
 
 --
 &lt;br&gt;
@@ -353,8 +357,8 @@ Go to *Tools &gt; Project Options &gt; Git/SVN* to enable Git with this RStudio 
 
 # Initialise Git repo
 
-Another way is to clone the Git repo directly from Github using RStudio.  
-Go to *File &gt; New Project*:  
+**Alternative method: Clone the online repo directly from Github using RStudio**    
+Go to *File &gt; New Project*    
 .pull-left[
 &lt;img src="images/New project.png" width="300" style="display: block; margin: auto;" /&gt;
 ]
@@ -366,8 +370,8 @@ Go to *File &gt; New Project*:
 
 # Initialise Git repo
 
-Another way is to clone the Git repo directly from Github using RStudio.  
-Go to *File &gt; New Project*:  
+**Alternative method: Clone the online repo directly from Github using RStudio**    
+Go to *File &gt; New Project*    
 &lt;img src="images/New project_copygh.png" width="600" style="display: block; margin: auto;" /&gt;
   
 &lt;img src="images/New project_details.png" width="300" style="display: block; margin: auto;" /&gt;
@@ -379,11 +383,11 @@ Go to *File &gt; New Project*:
 
 # Initialise Git repo
 
-**Note:**  
+## Important‼️  
 
 - Both these methods enable Git version control *for the downloaded folder*.
-- Version control is on your __*local*__ computer, and has nothing to do with your online Github account!
-- We will learn how to collaborate with others via Github in a later section.
+- Version control is on your __*local*__ computer, and has no links with your online Github account!
+- We will learn how to connect/collaborate via Github in a later section.
 
 ---
 
@@ -410,7 +414,7 @@ __[Git basics](#gitcmds)__
 
 # Git basics
 
-Create a new R Notebook at *File &gt; New File &gt; R Notebook*, and save it as *test.Rmd*.  
+**Create a new R Notebook at _File &gt; New File &gt; R Notebook_, and save it as _test.Rmd_**  
 
 &lt;img src="images/new rmd.png" width="600" style="display: block; margin: auto;" /&gt;
 .small[.footnote[
@@ -453,9 +457,9 @@ Create a new R Notebook at *File &gt; New File &gt; R Notebook*, and save it as 
 `git commit` has five components:  
 1. Unique ID aka SHA (secure hash algorithm)
 2. Author
-3. Human-readable commit message
-4. Changeset that describes which files were added/modified/deleted
-5. One parent (i.e. previous) commit, unless merging commits (multiple parents) or if this is the initial commit
+3. Commit message
+4. Changeset that describes files that were added/modified/deleted
+5. One parent (i.e. previous) commit, unless merging commits from multiple parents or if this is the initial commit
 ]]
 
 ???
@@ -472,12 +476,12 @@ Create a new R Notebook at *File &gt; New File &gt; R Notebook*, and save it as 
 
 **Commit changes**  
 
+Changes must be *'staged'*, in preparation for a *'commit'*.  
+
 &lt;div class="figure" style="text-align: center"&gt;
 &lt;img src="images/git remote.png" alt="Git basic operations (kevintshoemaker.github.io)" width="400" /&gt;
 &lt;p class="caption"&gt;Git basic operations (kevintshoemaker.github.io)&lt;/p&gt;
 &lt;/div&gt;
-
-Changes must be *'staged'*, in preparation for a *'commit'*.
 
 ???
 
@@ -531,20 +535,17 @@ To revert to a previous commit:
 1. Copy the SHA
 2. Run `git checkout &lt;SHA&gt; &lt;filename&gt;` in the Shell  
 
-.small[.footnote[
-Note: Look up **rebasing history** to go back in time to prevent a specific mistake from happening. It is an advanced techique, and should be used with care.
-]]
-
 ???
 
 - Navigate/view history (e.g. with collab)
 - Example of very bad, uninformative commit messages, using 2 diff coms (diff names)
+- Look up *rebasing history* to go back in time to prevent a specific mistake from happening (advanced techique, use with care)
 
 ---
 
 # Git basics
 
-**Ignore files** specified in `.gitignore`  
+**Ignore files specified in `.gitignore`**  
 
 &lt;img src="images/gitignore.png" width="600" style="display: block; margin: auto;" /&gt;
 
@@ -582,11 +583,21 @@ __[Git collaborating](#gitcollab)__
 ### Link Github
 ]
 .right-column[ 
-**[Create a new repo on Github](https://github.com/new)**
+**1. [Create a new repo on Github](https://github.com/new)**
+]
 
-1. If you're starting fresh, create new RStudio project and clone the online repo to your computer (as shown previously)
+---
+
+# Git collaborating
+
+.left-column[ 
+### Link Github
+]
+.right-column[ 
+**2. Create linked local repo**  
+Create new RStudio project and clone the online repo to your computer (as shown previously)
   
-2. If you've already been working on a local repo, *'push'* (i.e. publish) content to the new online repo. Run in Shell:    
+If you've already been working on a local repo, *'push'* (i.e. publish) content to the new online repo. Run in Shell:    
 `git remote add origin git@github.com:YOUR USERNAME/REPO NAME.git`  
 `git push -u origin master`
 
@@ -640,7 +651,7 @@ Each push usually includes multiple commits.
 &lt;img src="images/deconflict.png" width="400" style="display: block; margin: auto;" /&gt;
 
 **Set style to `diff3`**  
-This shows local/remote changes _with the original code_ (default `diff2` setting doesn't show original). Run in the Shell:  
+This shows local/remote changes _with the original code_. Run in the Shell:  
 `git config --global merge.conflictstyle diff3`  
 ]
 
@@ -648,6 +659,7 @@ This shows local/remote changes _with the original code_ (default `diff2` settin
 
 - RStudio currently doesn't provide many tools, so you may need to use the command line  
 - Open every file with the orange status  
+- Default `diff2` setting doesn't show original code! not helpful
 
 --
 
@@ -668,7 +680,7 @@ If you're in the middle of a merge conflict, change the setting before re-trying
 ### Conflicts 😱
 ]
 .right-column[ 
-**Conflict marker:** 
+**De-conflict regions with conflict marker**   
 
 ```r
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
@@ -689,10 +701,15 @@ The middle section shows *original* code before the split
 .small[.footnote[
 If the whole thing is one hot mess, abort the merge with `git merge --abort` &amp; try again `git pull`.
 ]]]
+
+???
+- We see middle regions because of the `diff3` setting
+
 --
 .right-column[ 
 __*Delete all conflict markers* before staging/commit/pushing the new de-conflicted file!__
 ]
+
 
 ---
 
@@ -705,13 +722,13 @@ __*Delete all conflict markers* before staging/commit/pushing the new de-conflic
 ### Investigate
 ]
 .right-column[ 
-**Git dropdown menu**: Track the history of a *specific* file
+**Track the history of a _specific_ file using the Git dropdown menu** 
 
 &lt;img src="images/git dropdown.png" width="600" style="display: block; margin: auto;" /&gt;
 
-.footnote[
+.small[.footnote[
 **'Blame'** shows the last change made to each line of code, who made the change, and the commit the change belongs to.  
-]
+]]
 ]
 
 ---
@@ -771,18 +788,108 @@ A *forked* repo is a __*static*__ copy. Even if you sync between your local and 
 ### Branches
 ]
 .right-column[ 
+
+**Branching in Git**  
+
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="images/branches.png" alt="Git branches (atlassian.com)" width="400" /&gt;
-&lt;p class="caption"&gt;Git branches (atlassian.com)&lt;/p&gt;
+&lt;img src="images/branches.png" alt="Example showing git branches (atlassian.com)" width="400" /&gt;
+&lt;p class="caption"&gt;Example showing git branches (atlassian.com)&lt;/p&gt;
 &lt;/div&gt;
-
-
 ]
 
 ???
-- We have been saving commits to the master branch
-- If we want to try something experimental/fork a repo = create new branches
+- So far, we have been saving commits to the master branch
+- If we fork a repo/try something experimental = create new branches
+- Forked repo on Github, sync with our local com
 
+---
+
+# Git collaborating
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Link Github&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Push&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Conflicts&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Investigate&lt;/span&gt;
+### Branches
+]
+.right-column[ 
+&lt;img src="images/switch branches.png" width="250" style="display: block; margin: auto;" /&gt;
+**Resolve conflicts regularly if you're working on a branch, by running in the Shell:**  
+`git merge master`  
+]
+???
+- harder to merge later if it diverges too much
+
+--
+.right-column[ 
+**To merge a branch back to the master:**  
+`git checkout master`  
+`git merge &lt;branch-name&gt;`  
+`git branch -d &lt;branch-name&gt;`  
+]
+
+???
+
+- Switch between branches in RStudio
+- Note: If you're using Github, you also see the remote master branch.
+
+---
+
+# Git collaborating
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Link Github&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Push&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Conflicts&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Investigate&lt;/span&gt;
+### Branches
+]
+.right-column[ 
+**If using a *forked* repo (you're not the owner), there are extra steps:**  
+
+- Sync *forked* repo on Github with *original* repo: &lt;sup&gt;1&lt;/sup&gt;  
+`git remote add upstream git@github.com:&lt;original-name&gt;/&lt;repo&gt;.git`  
+`git fetch upstream`  
+`git merge upstream/master`  
+
+- Create a branch and [**pull request**](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) to propose/discuss changes &lt;sup&gt;1&lt;/sup&gt;   
+
+&lt;img src="images/pr.png" width="550" style="display: block; margin: auto;" /&gt;
+
+.small[.footnote[
+&lt;sup&gt;1&lt;/sup&gt; If you always *submit pull requests in branches*, run `git branch -u upstream/master` to create branch on your **_local_** repo, then sync:      
+`git checkout master`   
+`git pull`  
+Check for remote changes if they occur while you work on your branch:  
+`git checkout &lt;my-branch&gt;`  
+`git merge master`
+]]
+]
+
+???
+- Pull request sth like an "issue" page
+- Recommended that you create a new branch to submit the PR 
+- 1-to-1 mapping of branch to PR. Branch can be updated throughout the discussion for a single PR
+- Merge or delete a PR after discussion
+
+---
+
+# Git collaborating
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Link Github&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Push&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Conflicts&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Investigate&lt;/span&gt;
+### Branches
+]
+.right-column[ 
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="images/pr-overview.png" alt="Overview of pull requests (http://r-pkgs.had.co.nz/git.html)" width="500" /&gt;
+&lt;p class="caption"&gt;Overview of pull requests (http://r-pkgs.had.co.nz/git.html)&lt;/p&gt;
+&lt;/div&gt;
+]
 
 ---
 

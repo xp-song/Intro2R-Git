@@ -52,6 +52,10 @@ __[Why use version control?](#why)__
 
 [Git it going](#gitit)  
 
+[Git basics](#gitcmds)  
+
+[Git collaborating](#gitcollab)  
+
 [Useful resources](#resources)  
 
 ---
@@ -117,6 +121,10 @@ __[Git with RStudio Projects](#rstudioproj)__
 [Initial set up](#setup)  
 
 [Git it going](#gitit)  
+
+[Git basics](#gitcmds)  
+
+[Git collaborating](#gitcollab)  
 
 [Useful resources](#resources)  
 
@@ -195,6 +203,10 @@ name: setup
 __[Initial set up](#setup)__  
 
 [Git it going](#gitit)  
+
+[Git basics](#gitcmds)  
+
+[Git collaborating](#gitcollab)  
 
 [Useful resources](#resources)  
 
@@ -301,7 +313,299 @@ name: gitit
 
 __[Git it going](#gitit)__  
 
+[Git basics](#gitcmds)  
+
+[Git collaborating](#gitcollab)  
+
 [Useful resources](#resources)  
+
+---
+
+class: inverse, center, middle
+
+# Intro2R-Git
+
+Unzip [downloaded](https://github.com/xp-song/Intro2R-Git/archive/master.zip) workshop materials and open the RStudio Project file   
+*Intro2R-Git.Rproj*
+
+---
+
+# Initialise Git repo
+
+&lt;img src="images/Intro2R-Gitproj.png" width="700" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Initialise Git repo
+
+&lt;img src="images/Intro2R-Gitproj_initialise.png" width="400" style="display: block; margin: auto;" /&gt;
+
+Go to *Tools &gt; Project Options &gt; Git/SVN* to enable Git with this RStudio Project (restart R).  
+
+???
+- run `git init` in shell?
+
+--
+&lt;br&gt;
+**Congrats, Git is now enabled for your project folder!**
+
+---
+
+# Initialise Git repo
+
+Another way is to clone the Git repo directly from Github using RStudio.  
+Go to *File &gt; New Project*:  
+.pull-left[
+&lt;img src="images/New project.png" width="300" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="images/New project_git.png" width="300" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Initialise Git repo
+
+Another way is to clone the Git repo directly from Github using RStudio.  
+Go to *File &gt; New Project*:  
+&lt;img src="images/New project_copygh.png" width="600" style="display: block; margin: auto;" /&gt;
+  
+&lt;img src="images/New project_details.png" width="300" style="display: block; margin: auto;" /&gt;
+
+???
+- Good practice to open in new session
+
+---
+
+# Initialise Git repo
+
+**Note:**  
+
+- Both these methods enable Git version control *for the downloaded folder*.
+- Version control is on your __*local*__ computer, and has nothing to do with your online Github account!
+- We will learn how to collaborate with others via Github in a later section.
+
+---
+
+class: inverse, center, middle
+name: gitcmds
+
+# Outline  
+ 
+[Why use version control?](#why)  
+
+[Git with RStudio Projects](#rstudioproj)  
+
+[Initial set up](#setup)  
+
+[Git it going](#gitit)  
+
+__[Git basics](#gitcmds)__  
+
+[Git collaborating](#gitcollab)  
+
+[Useful resources](#resources)  
+
+---
+
+# Git basics
+
+Create a new R Notebook at *File &gt; New File &gt; R Notebook*, and save it as *test.Rmd*.  
+
+&lt;img src="images/new rmd.png" width="600" style="display: block; margin: auto;" /&gt;
+.small[.footnote[
+`git status`
+- Yellow : New untracked file 
+- Green: File added
+- Red: File deleted
+- Blue: File modified
+]]
+
+???
+- Files that have changed are listed here (I modified to show the different statuses)
+- See changes by clicking *'Diff'*
+
+---
+
+# Git basics
+
+&lt;img src="images/diff_rmd file.png" width="600" style="display: block; margin: auto;" /&gt;
+
+.small[.footnote[
+`git diff`  
+- Background colors show sections that are added/removed
+- Shows old/new line numbers
+- Greyed-out sections give you context
+]]
+
+???
+- For a specific file, view diff
+
+---
+
+# Git basics
+
+**Commit changes**  
+
+&lt;img src="images/climbing.jpg" width="500" style="display: block; margin: auto;" /&gt;
+
+.small[.footnote[
+`git commit` has five components:  
+1. Unique ID aka SHA (secure hash algorithm)
+2. Author
+3. Human-readable commit message
+4. Changeset that describes which files were added/modified/deleted
+5. One parent (i.e. previous) commit, unless merging commits (multiple parents) or if this is the initial commit
+]]
+
+???
+
+- Fundamental building block of git (snapshot, show the journey)
+- Anchors while rock climbing - if you make mistake, can only fall back to previous commit
+
+- Few commits like free climbing; Too many can slow progress
+- More commits when uncertain/dangerous territory
+
+---
+
+# Git basics
+
+**Commit changes**  
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="images/git remote.png" alt="Git basic operations (kevintshoemaker.github.io)" width="400" /&gt;
+&lt;p class="caption"&gt;Git basic operations (kevintshoemaker.github.io)&lt;/p&gt;
+&lt;/div&gt;
+
+Changes must be *'staged'*, in preparation for a *'commit'*.
+
+???
+
+- Let's illustrate... 
+
+---
+
+# Git basics
+
+**Commit changes**  
+
+&lt;img src="images/commit message.png" width="450" style="display: block; margin: auto;" /&gt;
+
+1. Save changes
+2. Select files or sections of a file to stage
+3. Write commit message (&lt;50 char header; list details)
+
+???
+- Can be very specific - stage individual lines by selection!
+  - Won't be ticked; status in 2 cols
+  - *'Revert'* if want to undo your changes
+
+- Commit message: 
+  - Write in imperative (as if you're telling someone what to do)
+  - Specific action that can be explained easily (if 2 problems, break into 2)
+  - Describe **why** (not just what - can see in diff)
+  
+- 'Amend previous commit' if you committed too early previously (not if you pushed to Github!)
+
+---
+
+# Git basics
+
+**Commit changes**  
+
+&lt;img src="images/commit status.png" width="450" style="display: block; margin: auto;" /&gt;
+
+???
+- actual git command, parent, SHA, etc..
+
+---
+
+# Git basics
+
+**Historic changes**  
+
+&lt;img src="images/history.png" width="400" style="display: block; margin: auto;" /&gt;
+
+To revert to a previous commit:
+
+1. Copy the SHA
+2. Run `git checkout &lt;SHA&gt; &lt;filename&gt;` in the Shell  
+
+.small[.footnote[
+Note: Look up **rebasing history** to go back in time to prevent a specific mistake from happening. It is an advanced techique, and should be used with care.
+]]
+
+???
+
+- Navigate/view history
+
+---
+
+# Git basics
+
+**Ignore files** specified in `.gitignore`  
+
+&lt;img src="images/gitignore.png" width="600" style="display: block; margin: auto;" /&gt;
+
+???
+
+- Open it directly (a hidden file), or from the Git pane
+
+---
+
+class: inverse, center, middle
+name: gitcollab
+
+# Outline  
+ 
+[Why use version control?](#why)  
+
+[Git with RStudio Projects](#rstudioproj)  
+
+[Initial set up](#setup)  
+
+[Git it going](#gitit)  
+
+[Git basics](#gitcmds)  
+
+__[Git collaborating](#gitcollab)__  
+
+[Useful resources](#resources)  
+
+
+---
+
+# Git collaborating
+
+**[Create a new repo on Github](https://github.com/new)** and choose one of the following:
+
+1. If you're starting fresh, create new project using RStudio and clone the online repo to your computer (as shown previously)
+  
+2. If you've already been working on a repo locally, *'push'* (i.e. send) the content to the new online repo. Run the following in the Shell:    
+`git remote add origin git@github.com:YOUR USERNAME/REPO NAME.git`  
+`git push -u origin master`
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="images/git remote.png" alt="Git basic operations (kevintshoemaker.github.io)" width="300" /&gt;
+&lt;p class="caption"&gt;Git basic operations (kevintshoemaker.github.io)&lt;/p&gt;
+&lt;/div&gt;
+
+???
+
+- To collaborate with others online...  
+
+- 1st line: Tells Git tt your local repo has a `'remote'` version on Github, called `'origin'`  
+- 2nd line: Pushed your work to that repo
+
+
+---
+
+# Git collaborating
+
+To collaborate with others online...  
+
+If you do not own a repo, you'll have to *'fork'* (i.e. make a copy of) that repo onto your own Github account  
+
 
 
 ---
@@ -319,6 +623,10 @@ name: resources
 
 [Git it going](#gitit)  
 
+[Git basics](#gitcmds)  
+
+[Git collaborating](#gitcollab)  
+
 __[Useful resources](#resources)__  
 
 ---
@@ -330,6 +638,8 @@ class: left
 **[One-page guide](http://r-pkgs.had.co.nz/git.html)** by Hadley Wickham  
 
 **[Full e-book](https://happygitwithr.com)** by Jenny Bryan
+
+**[Infographic on fixing common problems](http://justinhileman.info/article/git-pretty/)**
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

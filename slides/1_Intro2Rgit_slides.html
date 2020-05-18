@@ -44,13 +44,264 @@ name: why
 
 # Outline  
  
-__[Why use a version control system?](#why)__  
+__[Why use version control?](#why)__  
 
-[blah](#blah)
+[Git with RStudio Projects](#rstudioproj)
+
+[Initial set up](#setup)  
+
+[Git it going](#gitit)  
 
 [Useful resources](#resources)  
 
+---
+
+# Why use version control?
+
+&lt;img src="images/phd101212s.gif" width="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Why use version control?
+
+.pull-left[
+&lt;img src="images/Git-logo.png" width=100 height=100&gt;  
+
+**Git**   
+
+- Version control system
+- *Track* changes to your code
+- *Visualise* changes with GUI clients  
+(e.g. RStudio, Github Desktop, etc.)
+- *Share* changes &amp; collaborate  
+(e.g. Github, Gitlab, Bitbucket)
+- Changes are combined automatically
+- Systematic way to de-conflict changes
+]
+--
+.pull-right[
+&lt;img src="images/Github-logo.png" width=98 height=98&gt;
+
+**Git + Github**  
+
+- Widely used in software development
+- Most popular for developing R packages
+]
+
+---
+
+# A bit about Git
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="images/Git hell.png" alt="Git hell (tugberkugurlu.com)" width="500" /&gt;
+&lt;p class="caption"&gt;Git hell (tugberkugurlu.com)&lt;/p&gt;
+&lt;/div&gt;
+
 ???
+- This doesn't mean tt git is easy to learn... a big topic...  
+- Merge different changes... A bit like Tokyo's train map (can never understand it properly)
+- Terminology can be quite strange... poor annotation can make it even more confusing
+- Nonetheless, RStudio can make it easier for us
+
+---
+
+class: inverse, center, middle
+name: rstudioproj
+
+# Outline  
+ 
+[Why use version control?](#why)  
+
+__[Git with RStudio Projects](#rstudioproj)__  
+
+[Initial set up](#setup)  
+
+[Git it going](#gitit)  
+
+[Useful resources](#resources)  
+
+---
+
+class: left
+
+# Git with RStudio Projects
+
+- RStudio Projects help organise your work into separate 'R sessions'.
+
+- Each project has it's own workspace a.k.a. 'working directory' (separate configuration files, history, etc.)
+
+???
+- We can use Git with R using RStudio Projects
+
+- Workspace = Table in my office 
+- How do I know which is my table?
+
+--
+
+- The location of the '_.RProj_' file defines the 'working directory' *and the __'Git repository'__*
+
+???
+- E.g. tissue paper
+- Likewise, .RProj file tells R that this is my workspace 
+  - Address: see window header, type getwd()  
+  
+- Each project will have a diff wd
+
+- Git is 'enabled' for the wd folder (hidden `.git` files)
+
+--
+
+## 🌟 Best Practice
+
+- Use _relative_ paths in your script, based on _.RProj_ file location   
+  
+- Keep all project items in the working directory 
+
+???
+
+- By using RStudio Projects... don't need to write out initial path
+- Demo: list.files("data") vs. absolute path
+- Scripts work across different computers
+
+---
+
+# Git with RStudio Projects
+
+&lt;img src="images/git pane.png" width="600" style="display: block; margin: auto;" /&gt;
+
+- If needed, you can access the Shell via *Tools &gt; Shell* (or the *'Terminal'* tab) 
+- Commands will be executed in the working directory (location of the '_.RProj_' file)
+
+.small[.footnote[
+**Important Shell commands:** `pwd` to print working directory; `cd &lt;name&gt;`: change directory, or `cd ..` to move up the directory hierarchy; `ls`: list files in the current directory.
+]]
+
+???
+
+- 'Git' pane and tools (can access ~150 Git commands from RStudio)
+- If you get stuck... often have to execute commands from the shell
+
+---
+
+class: inverse, center, middle
+name: setup
+
+# Outline  
+ 
+[Why use version control?](#why)  
+
+[Git with RStudio Projects](#rstudioproj)  
+
+__[Initial set up](#setup)__  
+
+[Git it going](#gitit)  
+
+[Useful resources](#resources)  
+
+---
+
+# Initial set up
+
+.left-column[ 
+### Install Git
+]
+.right-column[ 
+- Windows: http://git-scm.com/download/win.
+- OS X: http://git-scm.com/download/mac.
+- Debian/Ubuntu: sudo apt-get install git-core.
+- Other Linux distros: http://git-scm.com/download/linux.
+]
+
+---
+
+# Initial set up
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Install Git&lt;/span&gt;
+### Set-up Git
+]
+.right-column[ 
+In the *Shell*, configure your name and email address for Git:  
+
+`git config --global user.name "YOUR FULL NAME"`  
+`git config --global user.email "YOUR EMAIL ADDRESS"`  
+
+All commits (i.e. tracked changes) you make will be labelled with this information.
+]
+--
+.right-column[ 
+You can check if you’re set up correctly by running:  
+`git config --global --list`
+]
+---
+
+# Initial set up
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Install Git&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Set-up Git&lt;/span&gt;
+### Github
+]
+.right-column[ 
+Create an account at https://github.com, using the same email address as specified in Git.
+]
+
+---
+
+# Initial set up
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Install Git&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Set-up Git&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Github&lt;/span&gt;
+### Security
+]
+.right-column[ 
+Using a **SSH key-pair** reduces the need to key in your password.  
+
+- The *public* key encrypts data to be read by those with *private* key
+- In R, check if it is already present: `file.exists("~/.ssh/id_rsa.pub")`
+- Go to *RStudio Preferences* to create/view the public key:
+  
+&lt;img src="images/SSH.png" width="300" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Initial set up
+
+.left-column[ 
+### &lt;span style="color:grey"&gt;Install Git&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Set-up Git&lt;/span&gt;
+### &lt;span style="color:grey"&gt;Github&lt;/span&gt;
+### Security
+]
+.right-column[ 
+Add SSH key to Github at &lt;https://github.com/settings/ssh&gt;:
+
+&lt;img src="images/SSH Github.png" width="600" style="display: block; margin: auto;" /&gt;
+
+.small[.footnote[
+Note: If you've turned on 2FA on Github, [create a Personal Access Token (PAT) under the *'Developer settings'* of your *'Account settings'*](https://github.com/settings/tokens). Use the generated PAT as the password within RStudio, instead of your regular password.
+]]
+]
+
+---
+
+class: inverse, center, middle
+name: gitit
+
+# Outline  
+ 
+[Why use version control?](#why)  
+
+[Git with RStudio Projects](#rstudioproj)  
+
+[Initial set up](#setup)  
+
+__[Git it going](#gitit)__  
+
+[Useful resources](#resources)  
 
 
 ---
@@ -60,9 +311,13 @@ name: resources
 
 # Outline  
  
-[Why use a version control system?](#why)  
+[Why use version control?](#why)  
 
-[blah](#blah)
+[Git with RStudio Projects](#rstudioproj)  
+
+[Initial set up](#setup)  
+
+[Git it going](#gitit)  
 
 __[Useful resources](#resources)__  
 

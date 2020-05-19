@@ -36,9 +36,9 @@ You will need to have [R](https://cran.r-project.org) and [R Studio](https://www
 
 [Download the materials for this workshop](https://github.com/xp-song/Intro2R-Git/archive/master.zip) from the Github repository [Intro2R-Git](https://github.com/xp-song/Intro2R-Git). In the downloaded folder you will see a few important items. 
 
-* The _'slides'_ folder. View course materials in your web browser by opening the **.html** files   
+* The slide deck **Intro2R-Git_slides**.   
 
-* The RStudio Project file (ending with _.Rproj_). Opening it boots up RStudio. 
+* The RStudio Project file **Intro2R-Git.Rproj**. Opening it boots up RStudio. 
 
 <br>
 
